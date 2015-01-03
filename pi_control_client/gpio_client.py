@@ -35,7 +35,7 @@ class GPIOClient(object):
             exchange=self.device_key,
             routing_key=self.queue_name,
             properties=pika.BasicProperties(
-                reply_to=self.callback_queue,
+                reply_to=self.rpc_response_queue,
                 correlation_id=self.correlation_id),
             body=message)
 
