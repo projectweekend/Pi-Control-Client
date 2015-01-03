@@ -37,18 +37,18 @@ class GPIOClient(object):
             properties=pika.BasicProperties(
                 reply_to=self.rpc_response_queue,
                 correlation_id=self.correlation_id),
-            body=message)
+            body=json.dumps(message))
 
         while self.rpc_response is None:
             self.connection.process_data_events()
 
-        return self.rpc_response
+        return json.loads(self.rpc_response)
 
     def on(self, pin_number):
-        return self._call(json.dumps({'pin': pin_number, 'action': 'on'}))
+        return self._call({'pin': pin_number, 'action': 'on'})
 
     def off(self, pin_number):
-        return self._call(json.dumps({'pin': pin_number, 'action': 'off'}))
+        return self._call({'pin': pin_number, 'action': 'off'})
 
     def read(self, pin_number):
-        return self._call(json.dumps({'pin': pin_number, 'action': 'read'}))
+        return self._call({'pin': pin_number, 'action': 'read'})
