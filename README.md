@@ -1,4 +1,4 @@
-This is a client library for remotely controlling a Raspberry Pi that is running [Pi-Control-Service](https://github.com/projectweekend/Pi-Control-Service). After following the instructions for setting up the service, you will need to reuse the same RabbitMQ connection string and device key values to start using the client.
+This is a client library for remotely controlling a Raspberry Pi that is running [Pi-Control-Service](https://github.com/projectweekend/Pi-Control-Service). After following the instructions for setting up the service, you will need to reuse the same RabbitMQ connection string and device key values to start a client.
 
 
 ### Install it
@@ -11,7 +11,7 @@ pip install Pi-Control-Client
 
 The GPIO client (`pi_control_client.GPIOClient`) is used to control a Raspberry Pi running the GPIO service. More information about the service can be found [here](https://github.com/projectweekend/Pi-Control-Service) in the **GPIO service** section.
 
-#### Using the client
+#### Using the GPIO client
 
 ```python
 from pi_control_client import GPIOClient
