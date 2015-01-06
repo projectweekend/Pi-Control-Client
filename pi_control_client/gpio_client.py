@@ -17,3 +17,8 @@ class GPIOClient(RPCClient):
 
     def read(self, pin_number):
         return self._call({'pin': pin_number, 'action': 'read'})
+
+    def get_config(self, pin_number=None):
+        if pin_number:
+            return self._call({'pin': pin_number, 'action': 'get_config'})
+        return self._call({'action': 'get_config'})
