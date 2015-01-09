@@ -5,10 +5,9 @@ import uuid
 
 class RPCClient(object):
 
-    def __init__(self, rabbit_url, queue_name, device_key):
+    def __init__(self, rabbit_url, queue_name):
         self._rabbit_url = rabbit_url
         self._queue_name = queue_name
-        self._device_key = device_key
         self._connection = pika.BlockingConnection(pika.URLParameters(self._rabbit_url))
         self._setup_channel()
 
@@ -27,11 +26,11 @@ class RPCClient(object):
         if self._correlation_id == props.correlation_id:
             self._rpc_response = body
 
-    def _call(self, message):
+    def _call(self, device_key, message):
         self._rpc_response = None
         self._correlation_id = str(uuid.uuid4())
         self._channel.basic_publish(
-            exchange=self._device_key,
+            exchange=device_key,
             routing_key=self._queue_name,
             properties=pika.BasicProperties(
                 reply_to=self._rpc_response_queue,
