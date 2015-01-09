@@ -14,7 +14,6 @@ class RPCClient(object):
 
     def _setup_channel(self):
         self._channel = self._connection.channel()
-        self._channel.exchange_declare(exchange=self._device_key, type='direct')
 
         result = self._channel.queue_declare(exclusive=True)
         self._rpc_response_queue = result.method.queue
