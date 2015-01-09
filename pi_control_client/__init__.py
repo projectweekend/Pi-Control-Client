@@ -1,2 +1,2 @@
-from gpio_client import GPIOClient
-from custom_action_client import CustomActionClient
+from gpio import GPIOClient
+from custom_action import CustomActionClient
