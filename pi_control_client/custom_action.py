@@ -3,11 +3,10 @@ from rpc import RPCClient
 
 class CustomActionClient(RPCClient):
 
-    def __init__(self, rabbit_url, device_key):
+    def __init__(self, rabbit_url):
         super(CustomActionClient, self).__init__(
             rabbit_url=rabbit_url,
-            queue_name='custom_action_service',
-            device_key=device_key)
+            queue_name='custom_action_service')
 
-    def call(self, action_name):
-        return self._call({'action': action_name})
+    def call(self, device_key, action_name):
+        return self._call(device_key, {'action': action_name})

@@ -58,8 +58,8 @@ RABBIT_URL='some_actual_connection_string'
 # A unique string you make up to identify a single Raspberry Pi (must match the one used when starting the service)
 DEVICE_KEY='my_awesome_raspberry_pi'
 
-actions_client = CustomActionClient(rabbit_url=RABBIT_URL, device_key=DEVICE_KEY)
+actions_client = CustomActionClient(rabbit_url=RABBIT_URL)
 
 # Call a custom action
-result = actions_client.call('name_of_action_method')
+result = actions_client.call(DEVICE_KEY, 'name_of_action_method')
 ```
