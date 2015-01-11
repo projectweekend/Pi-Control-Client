@@ -6,7 +6,7 @@ class CustomActionClient(RPCClient):
     def __init__(self, rabbit_url):
         super(CustomActionClient, self).__init__(
             rabbit_url=rabbit_url,
-            queue_name='custom_action_service')
+            exchange='custom_action_service')
 
     def call(self, device_key, action_name):
         return self._call(device_key, {'action': action_name})
