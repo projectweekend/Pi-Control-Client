@@ -6,7 +6,7 @@ class GPIOClient(RPCClient):
     def __init__(self, rabbit_url):
         super(GPIOClient, self).__init__(
             rabbit_url=rabbit_url,
-            exchange='gpio_service')
+            exchange='gpio_control')
 
     def on(self, device_key, pin_number):
         return self._call(device_key, {'pin': pin_number, 'action': 'on'})

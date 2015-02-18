@@ -4,3 +4,4 @@ v0.0.3, 2015-01-03 -- Fix missing package.
 v0.0.4, 2015-01-05 -- Add get_config.
 v0.1.0, 2015-01-09 -- Pass device_key on every method.
 v0.1.1, 2015-01-09 -- Update to match exchange and routing key changes in Pi-Control-Service.
+v1.0.0, 2015-02-17 -- Exchange names have changed
